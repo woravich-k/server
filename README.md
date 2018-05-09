@@ -10,10 +10,10 @@ Phonegap V.7.1.1 as a deployment of the client side applications
 
 ## Hardware
 Server
-a database server and a webserver are needed.
+- a database server and a webserver are needed.
 
 Client
-an moblie device
+- an moblie device
 
 
 ## Software
@@ -27,6 +27,14 @@ Client
 
 ## Certificate
 Since this system is served via https protocol, a SSL certificate is needed. However the code could be adapted to serve via http protocol.
+
+
+
+
+
+
+
+
 
 
 
@@ -106,6 +114,28 @@ There are three tables used in this system. The SQL statements creating these ta
   - POST functions to create, edit, delete
   
  ### Client: Question - main.js
+ The JavaScript functions in this file are for displaying HTML - i.e. AJAX, DOM
+  - Loading existing questions from the Database and create HTML table according to the response from the webserver
+  - Loading four_choices.html by AJAX, if the user request to add new or edit question
+    - Using AJAX, so the system could be developed to have other form of question apart from multiple(4)-choice question such as True-False question, multiple correct answers question
+    
+ ### Client: Quiz - appActivity.js
+ There are five groups of functions devided by the purposes
+ - Loading map functions
+ - Adding/Removing questions layer functions, including symbolising makers and creating markers' pop-up
+ - Switches and button functions, mornitoring change of the switches to activate other functions
+ - Login functions, to manipulate login window including
+    - Changing DIV to create new account or Login with existing account
+    - Close window after login success
+    - validate requested login and creating account such as invalid username and password, preventing un-match passwords when creating account
+ - Quiz functions
+    - tracking the current location
+    - finding the closest unanswered question that is within the cutoff distance (100meters)
+      - To change the cutoff distance, the parameter 'cutoffDist' could be adapted
+    - popping the closest question according to quizform.html using AJAX
+    - recieving answer from the user and posting to the database
+    - show the correct answer to the user
+  
  
 
  
@@ -117,8 +147,6 @@ There are three tables used in this system. The SQL statements creating these ta
 
 
 
-
-##
 
 
 # server
