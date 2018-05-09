@@ -1,0 +1,40 @@
+CREATE table public.question
+(id serial not null,
+question text not null,
+QURL text,
+choice1 text not null,
+choice2 text not null,
+choice3 text not null,
+choice4 text not null,
+choice1URL text,
+choice2URL text,
+choice3URL text,
+choice4URL text,
+answer text not null,
+fullanswer text not null,
+geom geometry not null);
+update public.question SET geom = ST_setSRID(geom,4326);
+
+alter table public.question add constraint question_pk primary key(id);
+alter table public.question add constraint question_geom_unique unique(geom);
+
+CREATE table public.account_web
+(id serial not null,
+username text not null,
+password text not null);
+alter table public.account_web add constraint account_web_pk primary key(id);
+alter table public.account_web add constraint account_web_username_unique unique(username);
+
+CREATE table public.user_ans
+(id serial not null,
+accountid integer not null,
+questionid integer not null,
+userans text not null,
+truefalse boolean not null);
+
+
+alter table public.user_ans add constraint user_ans_pk primary key(id);
+alter table public.user_ans add constraint user_ans_userid_questionid_unique unique(accountid,questionid);
+-- not add foreign key constraint in order to easily, delete account and question
+-- alter table public.user_ans add constraint user_ans_account_web_fk foreign key(accountid) references public.account_web(id);
+-- alter table public.user_ans add constraint user_ans_question_fk foreign key(questionid) references public.question(id);
