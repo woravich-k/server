@@ -39,24 +39,39 @@ Client
 There are three tables used in this system. The SQL statements creating these tables are uploaded to this repository
   
   - question: a table of questions
-  field: id (primary key) (number)
-         question, choice1, choice2, choice3, choice4 (text) - store question and choices
-         qurl, choice1url, choice2url, choice3url, choice4url (text) (optional) - image URLs of the additional information of question and choices
-         answer (text) - the correct answer as "choice1", "choice2", "choice3", "choice4"
-         fullanswer (text) - the full answer of the correct choice
-         geom (unique) (geometry) - the GCS WGS 1984(espg:4326) coordinates
+  
+field: 
+id (primary key) (number)
+
+question, choice1, choice2, choice3, choice4 (text) - store question and choices
+
+qurl, choice1url, choice2url, choice3url, choice4url (text) (optional) - image URLs of the additional information of question and choices
+
+answer (text) - the correct answer as "choice1", "choice2", "choice3", "choice4"
+
+fullanswer (text) - the full answer of the correct choice
+
+geom (unique) (geometry) - the GCS WGS 1984(espg:4326) coordinates
          
   - account_web: a table of users' accounts
-  filed: id (primary key) (number)
-         username (text) - the username of the account
-         password (text) - the password of the account
+  
+filed: id (primary key) (number)
+
+username (text) - the username of the account
+
+password (text) - the password of the account
          
-    - user_ans: a table of history answers of all accounts
+  - user_ans: a table of history answers of all accounts
+  
   filed: id (primary key) (number) 
-         accountid (unique) (number) - id of the account that anwser the question
-         questionid (number) - id of the question that is anwsered by the account
-         userans (text) - the user's answer
-         truefalse (boolean) - indicate correct or incorrect answer
+        
+  accountid (unique) (number) - id of the account that anwser the question
+  
+  questionid (number) - id of the question that is anwsered by the account
+  
+  userans (text) - the user's answer
+  
+  truefalse (boolean) - indicate correct or incorrect answer
          
 ## Overview functions
 
@@ -69,7 +84,7 @@ There are three tables used in this system. The SQL statements creating these ta
 
 # To deploy this system
 
-## hardward
+## Hardward
 Server
 a database server and a webserver are needed.
 
@@ -77,7 +92,7 @@ Client
 an moblie device
 
 
-## software
+## Software
 Server
 - Postgres SQL on database server
 - NodeJS on webserver (the system is tested on version v8.9.3 operating on Ubuntu 16.04.2 LTS)
